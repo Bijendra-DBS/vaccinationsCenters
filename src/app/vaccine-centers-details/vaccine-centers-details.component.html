@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="content-wrapper top-header-spacer">
+    <div class="Vaccine-center-wrapper">
+      <!-- start card design -->
+      <div class="row center-detail-wrapper">
+            <div class="" *ngFor="let element of responseBody">
+              <mat-card class="example-card">
+                <img mat-card-image src="{{element.img}}" alt="Vaccine Center Photo">
+                <mat-card-content>
+                  <p><b>{{element.name}}</b></p>
+                <h2>€ {{element.price}}</h2>
+                <p>{{element.address}}</p>
+                <p>{{element.timings}}</p>
+                <p>{{element.Parking}}</p>
+                <p>{{element.Facilities}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-stroked-button color="accent" (click)="bookAppointment()">Booking Slot</button>
+                </mat-card-actions>
+              </mat-card>
+          </div>
+
+        </div>
+
+      <!-- end card design -->
+    </div>
+  </div>
+  </div>

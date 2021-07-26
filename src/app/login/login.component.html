@@ -1,0 +1,86 @@
+<div class="tab-wrapper">
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Login">
+    <div class="form-wrapper">
+    <form *ngIf="!isVisible" name="validateForm" [formGroup]="validateForm" novalidate (ngSubmit)="submitForm(validateForm.value)">
+
+      <mat-form-field class="form-field-width  mt-2">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+        <mat-error *ngIf="validateForm.get('email').hasError('required')">
+            Email is required
+        </mat-error>
+        <mat-error *ngIf="validateForm.get('email').hasError('email')">
+            Please enter a valid email address
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-width mt-2">
+      <mat-label>Select Type</mat-label>
+      <mat-select name="userType" formControlName="userType">
+        <mat-option value=1>User</mat-option>
+        <mat-option value=2>Vaccine Center</mat-option>
+      </mat-select>
+        <mat-error>
+          Login type is required!
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-width mt-2">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+        <mat-error *ngIf="validateForm.get('password').hasError('required')">
+          Password is required!
+        </mat-error>
+        <mat-error
+            *ngIf="!validateForm.get('password').hasError('required') &&
+                    validateForm.get('password').hasError('passErr')">
+            Please enter a valid password! <br>
+            *minimum length should be 8 digit <br>
+            *must contain Numeric and Alpha characters
+        </mat-error>
+    </mat-form-field>
+
+    <!-- <div class="remember-forgot-password" class="d-flex mt-5  justify-content-end">
+        <a href="javascript:;" class="forgot-password" (click)="forgotPassword()">
+            Forgot Password?
+        </a>
+    </div> -->
+
+    <button mat-raised-button color="primary" class="submit-button mt-3 mr-3" aria-label="LOGIN"
+            [disabled]="validateForm.invalid">
+        LOGIN
+    </button>
+    <button mat-stroked-button (click)="resetLogin()" color="warn" class="submit-button mt-3" aria-label="Cancel" [mat-dialog-close]="">
+      Cancel
+    </button>
+    </form>
+
+    <!-- OTP Form -->
+   <!-- <div class="otp-wrapper" *ngIf="isVisible">
+    <app-forgot-password *ngIf="isVisible" (outputResetData)="resetLogin($event)"> </app-forgot-password>
+  </div> -->
+
+    <!-- <div class="separator login">
+      <span class="text">OR</span>
+    </div> -->
+
+    <!-- <div class="d-flex  justify-content-center">
+
+      <button mat-stroked-button class="google"><i><img src="../../assets/images/social/google.png"></i>
+          <b>Log in with Google</b>
+      </button>
+
+    </div> -->
+  </div>
+   <!-- loginform ends -->
+
+
+  </mat-tab>
+  <mat-tab label="Sign Up">
+    <app-sign-up></app-sign-up>
+  </mat-tab>
+</mat-tab-group>
+</div>

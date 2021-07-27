@@ -15,7 +15,10 @@ export class LoginComponent implements OnInit {
   otpForm: FormGroup;
   isVisible:boolean = false;
   isForgotPassVisible: boolean = false;
-
+  loginOption = [
+    {value: '1', viewValue: 'User'},
+    {value: '2', viewValue: 'Vaccine Center'},
+  ];
   constructor(private router: Router, private _commonService: CommonService, private _formBuilder: FormBuilder, private _loginService : loginService) { }
 
   ngOnInit(): void {
@@ -38,20 +41,27 @@ export class LoginComponent implements OnInit {
       }
 
       console.log("submit Form ",value);
-      if(value){
-        this.router.navigate(['listing'])
-        alert("something works !")
-
+      this.router.navigate(['listing']);
+      if(value.userType == 1){
+        sessionStorage.setItem("userData",JSON.stringify(value));
+      } else if(value.userType == 2){
+        this.router.navigate(['center-dashboard']);
+        sessionStorage.setItem("userData",JSON.stringify(value));
       } else {
         alert("something went wrong!")
       }
   }
 
-  otpSubmitForm(value: any) {
-    console.log("otp console",value);
+  loginType(event){
+    console.log("selectedType",event);
 
+    let selectedType = event;
+    console.log("selectedType",selectedType);
   }
 
+  otpSubmitForm(value: any) {
+    console.log("otp console",value);
+  }
 
   resetLogin() {
    this.validateForm.reset()
@@ -61,13 +71,11 @@ export class LoginComponent implements OnInit {
 
     console.log("control.value ----->",control.value)
 
-
     if(!control.value) {
       return { required: true };
     } else if (control.value.match(RegexConstant.ONLY_NUMBER)){
       return {};
     } else {
-
       return { mobileErr: true, error: true };
     }
   }

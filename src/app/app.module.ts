@@ -17,6 +17,11 @@ import { SignUpComponent } from './sign-up/sign-up.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VaccineCentersComponent } from './vaccine-centers/vaccine-centers.component';
 import { VaccineCentersDetailsComponent } from './vaccine-centers-details/vaccine-centers-details.component';
+import { VaccineUserListingComponent } from './vaccine-user-listing/vaccine-user-listing.component';
+import { BookingPageComponent } from './booking-page/booking-page.component';
+import { CenterDashboardPageComponent } from './center-dashboard-page/center-dashboard-page.component';
+import { VaccinatedPatientsComponent } from './vaccinated-patients/vaccinated-patients.component';
+import { VaccinationFormComponent } from './vaccination-form/vaccination-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,11 @@ import { VaccineCentersDetailsComponent } from './vaccine-centers-details/vaccin
     SignUpComponent,
     VaccineCentersComponent,
     VaccineCentersDetailsComponent,
+    VaccineUserListingComponent,
+    BookingPageComponent,
+    CenterDashboardPageComponent,
+    VaccinatedPatientsComponent,
+    VaccinationFormComponent,
   ],
   imports: [
     BrowserModule,

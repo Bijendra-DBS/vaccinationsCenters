@@ -7,7 +7,7 @@ import { CommonService } from '../shared/commonService/common.service';
 @Injectable()
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private VaccineCenterLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  private VaccineCenterLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
     return  this.loggedIn.asObservable();
@@ -25,12 +25,14 @@ export class AuthService {
 
   checkSession(userData) {
     if( userData != null && userData.userType == 2) { // this condition is checking whether it's admin or normal user
-    this.VaccineCenterLoggedIn.next(false);
-    this.loggedIn.next(true)
-    return true;
-    } else {
     this.VaccineCenterLoggedIn.next(true);
+    this.loggedIn.next(false)
+    return true;
+    } else if(userData != null && userData.userType == 1) {
+    this.VaccineCenterLoggedIn.next(false);
     this.loggedIn.next(true);
+      return true;
+    } else {
       return true;
     }
   }

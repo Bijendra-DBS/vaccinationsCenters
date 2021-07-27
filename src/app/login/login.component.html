@@ -18,9 +18,8 @@
 
     <mat-form-field class="form-field-width mt-2">
       <mat-label>Select Type</mat-label>
-      <mat-select name="userType" formControlName="userType">
-        <mat-option value=1>User</mat-option>
-        <mat-option value=2>Vaccine Center</mat-option>
+      <mat-select name="userType" formControlName="userType" (change)="loginType($event)">
+        <mat-option [value]="option.value" *ngFor="let option of loginOption">{{option.viewValue}}</mat-option>
       </mat-select>
         <mat-error>
           Login type is required!

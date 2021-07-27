@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="content-wrapper top-header-spacer">
+    <div class="Vaccine-center-wrapper">
+      <!-- start card design -->
+      <div class="center-listing-wrapper">
+          <mat-card>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let element of responseBody; let i = index">
+            <mat-card class="listing-card">
+            <mat-card-content>
+              <p><b>{{element.name}}</b></p>
+              <h2>€ {{element.price}}</h2>
+              <p>{{element.address}}</p>
+              <p>{{element.timing}}</p>
+            </mat-card-content>
+              <mat-card-actions>
+                <form name="validateForm" [formGroup]="doVaccinationValidateForm" novalidate (ngSubmit)="submitForm(i,doVaccinationValidateForm.value)">
+                  <mat-form-field class="form-field-width">
+                      <mat-label>Token Number</mat-label>
+                      <input matInput formControlName="tokenNumber">
+                      <mat-icon matSuffix class="secondary-text">key</mat-icon>
+                      <mat-error>
+                          Token number is required
+                      </mat-error>
+                  </mat-form-field>
+                <button mat-stroked-button color="accent">Do Vaccine</button>
+              </form>
+              </mat-card-actions>
+            </mat-card>
+            </div>
+            </div>
+          </mat-card>
+        </div>
+    </div>
+  </div>
+</div>
+

@@ -18,7 +18,8 @@ export class VaccineCentersComponent implements OnInit {
     {img: "../assets/images/cityHallCork.jpg", name:"City Hall Cork", address: "City Hall, Anglesea Street, Cork City, Cork", timings : "9am to 8pm", price: "Free"},
     {img: "../assets/images/avivaVaccineCenter.jpg", name:"Aviva Stadium", address: "Landsdowne Road, Ballsbridge, Dublin 4, Dublin", timings : "9am to 8pm", price: "Free"}
   ];
-  constructor(private _router : Router, private _vaccineCenterService : vaccineCenterService, private _observableDataService : ObservableDataService) { }
+  constructor(private _router : Router, private _vaccineCenterService : vaccineCenterService,
+     private _observableDataService : ObservableDataService) { }
 
   ngOnInit(): void {
     this._vaccineCenterService.getListOfCenters().subscribe((responseData)=>{

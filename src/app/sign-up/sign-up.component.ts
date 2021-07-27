@@ -40,8 +40,10 @@ export class SignUpComponent implements OnInit {
         this.signUpValidateForm.controls[key].markAsDirty();
         this.signUpValidateForm.controls[key].updateValueAndValidity();
       }
-
       console.log("submit Form ",value);
+      if(value != null){
+        this.isVisible = !this.isVisible;
+      }
     }
 
     resetLogin() {
@@ -56,6 +58,9 @@ export class SignUpComponent implements OnInit {
       //   otp : value.otp,
       //   userType : this.signUpValidateForm.value.userType
       // }
+
+      this.isVisible = !this.isVisible;
+
     }
 
     passwordPattern = (control: FormControl): {[s: string]: boolean} => {

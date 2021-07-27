@@ -5,11 +5,11 @@
     <div class="row center-listing-wrapper">
         <mat-card>
         <div class="row">
-          <div class="col-md-3" *ngFor="let element of responseBody">
+          <div class="col-md-3 mb-4" *ngFor="let element of responseBody">
             <mat-card class="example-card">
               <img mat-card-image src="{{element.img}}" alt="Vaccine Center Photo">
               <mat-card-content>
-                <p><b>{{element.name}}</b></p>
+              <p><b>{{element.name}}</b></p>
               <h2>€ {{element.price}}</h2>
               <p>{{element.address}}</p>
               <p>{{element.timings}}</p>

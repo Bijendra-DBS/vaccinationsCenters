@@ -7,8 +7,14 @@
             <div class="row">
               <img src="../../assets/images/thankyou.png">
               <mat-card-content>
-               <h1>Appointment is booked will be get back to you with in
+               <h1>Hi <i><b>"{{userData.user_name}}"</b></i> your appointment is booked, will be get back to you with in
                  3 weeks via Email with appointment date and time</h1>
+                 <h2><b><i>Please Note you have received Token number on your registered email id, please keep handy this code while visiting at vaccination center</i></b></h2>
+                 <h2>Bellow is you vaccine center Details</h2>
+                 <ul>
+                   <li>{{responseBody.param.name}}</li>
+                   <li>{{responseBody.param.address}}</li>
+                 </ul>
               </mat-card-content>
             </div>
         </mat-card>

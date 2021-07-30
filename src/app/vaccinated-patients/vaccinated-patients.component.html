@@ -4,17 +4,22 @@
     <div class="Vaccine-center-wrapper">
       <!-- start card design -->
       <div class="center-listing-wrapper">
+        <mat-card class="mb-4">
+          <mat-card-content>
+          <h2>{{vaccineCenterData.name}}</h2>
+          </mat-card-content>
+        </mat-card>
           <mat-card>
         <div class="row">
-          <div class="col-md-4" *ngFor="let element of responseBody">
+          <div class="col-md-4" *ngFor="let element of responseData">
             <mat-card class="listing-card">
             <mat-card-content>
-              <p><b>{{element.name}}</b></p>
-              <h2>€ {{element.price}}</h2>
-              <p>{{element.address}}</p>
-              <p><b>{{element.status}}</b></p>
-              <p>{{element.VDate}}</p>
-              <p>{{element.VTime}}</p>
+              <p>Name: <b>{{element.user_name}}</b></p>
+              <p>Email ID: <b>{{element.user_email_id}}</b></p>
+              <h2>€ Free</h2>
+              <p>Address: Dublin 2, Dublin</p>
+              <p><b>{{element.vaccination_status == "True" ? "Vaccination Done" : "Vaccination Pending"}}</b></p>
+              <p>{{element.created_date | date: "dd/MM/yyyy hh:mm:ss" }}</p>
               </mat-card-content>
               <!-- <mat-card-actions>
                 <button mat-stroked-button color="accent" (click)="detailPage(element.id,element.param)">View More</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { dashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-center-dashboard-page',
@@ -7,14 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./center-dashboard-page.component.scss']
 })
 export class CenterDashboardPageComponent implements OnInit {
+  vaccineLoginData;
 
-  responseBody = [{
 
-  }]
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _dashboardService : dashboardService) { }
 
   ngOnInit(): void {
+    this.vaccineLoginData = JSON.parse(sessionStorage.getItem('userData'))
   }
 
   newPatientsDetailPage(){

@@ -17,7 +17,8 @@ export class SignUpComponent implements OnInit {
   loginResponseData;
   message;
 
-  constructor(private _formBuilder: FormBuilder, private _signUpService : signUpService, private _commonService : CommonService) { }
+  constructor(private _formBuilder: FormBuilder, private _signUpService : signUpService,
+     private _commonService : CommonService, private router: Router) { }
 
   ngOnInit(): void {
     this.signUpValidateForm = this._formBuilder.group({
@@ -42,7 +43,21 @@ export class SignUpComponent implements OnInit {
       }
       console.log("submit Form ",value);
       if(value != null){
-        this.isVisible = !this.isVisible;
+        let obj = {
+          username : value.name,
+          email : value.email,
+          password : value.password,
+          contact : value.contactNo,
+          userType : '1'
+        }
+
+        this._signUpService.signUp(obj).subscribe((responseBody)=>{
+          let responseData = responseBody
+          console.log(responseData);
+          if(responseData.status == 200){
+            this.isVisible = !this.isVisible;
+          }
+      })
       }
     }
 
@@ -53,13 +68,23 @@ export class SignUpComponent implements OnInit {
     otpSubmitForm(value: any) {
       console.log("submit Form ",value);
 
-      // let requestData = {
-      //   contactNo : this.signUpValidateForm.value.contactNo,
-      //   otp : value.otp,
-      //   userType : this.signUpValidateForm.value.userType
-      // }
+      if(value != null){
+        let obj = {
+          otp_code : value.otp
+        }
 
-      this.isVisible = !this.isVisible;
+        this._signUpService.sendOTP(obj).subscribe((responseBody)=>{
+          let responseData = responseBody
+          console.log(responseData);
+          if(responseData.status == 200){
+            this.isVisible = !this.isVisible;
+            this.message = "OTP is confirmed and email address is verifyed, Please Login!"
+            this.signUpValidateForm.reset()
+            this.router.navigate(['/'])
+          }
+      })
+      }
+
 
     }
 

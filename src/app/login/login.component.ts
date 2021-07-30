@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
     {value: '1', viewValue: 'User'},
     {value: '2', viewValue: 'Vaccine Center'},
   ];
-  constructor(private router: Router, private _commonService: CommonService, private _formBuilder: FormBuilder, private _loginService : loginService) { }
+  constructor(private router: Router, private _commonService: CommonService,
+    private _formBuilder: FormBuilder, private _loginService : loginService) { }
 
   ngOnInit(): void {
     this.validateForm = this._formBuilder.group({
@@ -41,12 +42,37 @@ export class LoginComponent implements OnInit {
       }
 
       console.log("submit Form ",value);
-      this.router.navigate(['listing']);
       if(value.userType == 1){
-        sessionStorage.setItem("userData",JSON.stringify(value));
+        let obj={
+          email : value.email,
+          password : value.password
+        }
+        this._loginService.login(obj).subscribe((responseBody)=>{
+          let responseData = responseBody
+          if(responseData.status == 200){
+            responseData.body[0].userType = "1"
+            sessionStorage.setItem("userData",JSON.stringify(responseData.body[0]));
+            this.router.navigate(['listing']);
+          }
+        },err => {
+          this._commonService.tostMessage(err.error.responseMessage);
+       })
       } else if(value.userType == 2){
-        this.router.navigate(['center-dashboard']);
-        sessionStorage.setItem("userData",JSON.stringify(value));
+        let obj={
+          email : value.email,
+          password : value.password
+        }
+        this._loginService.vaccinCenterlogin(obj).subscribe((responseBody)=>{
+          let responseData = responseBody
+          console.log("responseData Login",responseData.body);
+          if(responseData.status == 200){
+            responseData.body[0].userType = "2"
+            sessionStorage.setItem("userData",JSON.stringify(responseData.body[0]));
+            this.router.navigate(['center-dashboard']);
+          }
+        },err => {
+          this._commonService.tostMessage(err.error.responseMessage);
+       })
       } else {
         alert("something went wrong!")
       }

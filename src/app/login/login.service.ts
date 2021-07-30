@@ -17,5 +17,8 @@ export class loginService {
     return this.restService.create(RestUrl.login, data)
   }
 
+  vaccinCenterlogin(data): Observable<any> {
+    return this.restService.create(RestUrl.vaccinCenterlogin, data)
+  }
 
 }

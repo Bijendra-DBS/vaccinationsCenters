@@ -17,5 +17,10 @@ export class signUpService {
     return this.restService.create(RestUrl.signUp, data)
   }
 
+  sendOTP(data): Observable<any> {
+    console.log("data in sign up", data)
+    return this.restService.create(RestUrl.sendOTP, data)
+  }
+
 
 }

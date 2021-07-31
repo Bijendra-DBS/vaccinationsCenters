@@ -63,13 +63,13 @@ export class AppComponent implements OnInit {
     } else if(this.checkUser.userType == 2) {
       this._route.navigate(['center-dashboard']);
     } else {
-      this._route.navigate(['']);
+      this._route.navigate(['login']);
     }
   }
 
   logout(){
     sessionStorage.clear();
-    this._route.navigate(['']);
+    this._route.navigate(['login']);
     // location.reload();
   }
 

@@ -52,7 +52,7 @@ export class AuthService {
   logOut(){
     location.reload();
     sessionStorage.clear();
-    this._route.navigate(['']);
+    this._route.navigate(['login']);
     this._commonService.tostMessage("Log Out Successfully!");
   }
 

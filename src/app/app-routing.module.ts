@@ -11,7 +11,7 @@ import { VaccineUserListingComponent } from './vaccine-user-listing/vaccine-user
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  // { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login' , component: LoginComponent, canActivate: [AuthGuard]},
   { path: 'listing' , component: VaccineCentersComponent, canActivate: [AuthGuard]},
   { path: 'detail' , component: VaccineCentersDetailsComponent, canActivate: [AuthGuard]},

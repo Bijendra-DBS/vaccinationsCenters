@@ -6,10 +6,11 @@
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
-
+/Scripts
 # dependencies
 /node_modules
-
+/Lib
+/__pycache__
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json

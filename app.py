@@ -9,7 +9,7 @@ import json
 import user
 import resources
 
-app = Flask(__name__, static_url_path='', static_folder='dist/covidCenters')
+app = Flask(__name__, static_url_path='/', static_folder='dist/covidCenters')
 flask_mysqldb = MySQL()
 
 CORS(app)
@@ -28,6 +28,9 @@ initDB()
 # def initApp():
 #     return("Welcome to Covid Vaccine Center App API Page")
 
+@app.route('/')
+def login():
+    return app.send_static_file('index.html')
 
 @app.route("/resource/centersList", methods=['GET'])  # get all Vaccine  centers
 def getAllVaccineCenters():

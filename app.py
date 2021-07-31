@@ -24,9 +24,9 @@ def initDB():
 
 initDB()
 
-@app.route("/")
-def initApp():
-    return("Welcome to Covid Vaccine Center App API Page")
+# @app.route("/")
+# def initApp():
+#     return("Welcome to Covid Vaccine Center App API Page")
 
 
 @app.route("/resource/centersList", methods=['GET'])  # get all Vaccine  centers

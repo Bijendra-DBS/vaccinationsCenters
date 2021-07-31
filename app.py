@@ -16,10 +16,10 @@ CORS(app)
 cors = CORS(app, resources={r"/": {"origins": "*"}})
 
 def initDB():
-    app.config['MYSQL_USER'] = 'root'
-    app.config['MYSQL_PASSWORD'] = 'root@123'
-    app.config['MYSQL_DB'] = 'covidvaccinedb'
-    app.config['MYSQL_HOST'] = 'localhost'  # for now
+    app.config['MYSQL_USER'] = 'nz6v2v9jfdd5mz89'
+    app.config['MYSQL_PASSWORD'] = 'r3l4d6ztmb2w3qeo'
+    app.config['MYSQL_DB'] = 'rynr5arplf46mchi'
+    app.config['MYSQL_HOST'] = 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com'  # for now
     flask_mysqldb.init_app(app)
 
 initDB()

@@ -22,6 +22,7 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
 import { CenterDashboardPageComponent } from './center-dashboard-page/center-dashboard-page.component';
 import { VaccinatedPatientsComponent } from './vaccinated-patients/vaccinated-patients.component';
 import { VaccinationFormComponent } from './vaccination-form/vaccination-form.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { VaccinationFormComponent } from './vaccination-form/vaccination-form.co
   providers: [
     AuthService,
     AuthGuard,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpIntercepterBasicAuthService,
